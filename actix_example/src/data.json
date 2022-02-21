@@ -1,0 +1,19 @@
+{
+    "songs": [
+        {
+            "name": "Sommarfågel",
+            "author": "Wintergatan",
+            "duration": 233
+        },
+        {
+            "name": "Glimmer",
+            "author": "Jarren",
+            "duration": 270
+        },
+        {
+            "name": "Never Gonna Give You Up",
+            "author": "Rick Astley",
+            "duration": 213
+        }
+    ]
+}

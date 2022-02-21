@@ -12,7 +12,7 @@ If you have [Docker](https://www.docker.com/get-started), you can also use the `
 ## Running Projects
 Each "crate" must be compiled before run. This can be done via command line. `cd` into a given directory then execute `cargo run`. This will build the project then run it.
 
-To get auto generated documentation (similar to javadocs, run `cargo doc`. This will generate documentation within `$PWD/target/doc/` where `$PWD` is the current working directory
+To get auto generated documentation (similar to javadocs, run `cargo doc`. This will generate documentation within `$PWD/target/doc/` where `$PWD` is the current working directory. You can then open the `index.html` within that directory in a web browser.
 
 ## Project Descriptions
 
@@ -25,11 +25,11 @@ A C implementation is also provided within [guessing_game_c](guessing_game_c). T
 
 ### Fibonacci
 [Link to sub-project](fibonacci)
-
+Two different implementations of fibonacci. One is a basic recursive definition. The other using dynamic programming paradigms to save previous results for future calls.
 
 
 ### QueueBot
 [Link to sub-project](queuebot)
-An implementation of CS 120's QueueBot but within Rust instead of Python
+An implementation of CS 120's QueueBot but within Rust instead of Python. See that project's README for more information
 
 ### Web servers

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Viewer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+
+<body>
+    <main>
+        <!-- Define an input box which Javascript will grab from to test the /echo route -->
+        <label for="echoText">Input message to be echoed by server:</label>
+        <input type="text" id="echoText" name="echoText">
+        <button id="echoSubmit">Submit</button>
+
+        <br />
+        <hr />
+
+        <br /><br /><br />
+        <!-- The blank table that will be populated via Javascript to contain all known songs -->
+        <table id="songsTable">
+            <tr>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Duration</th>
+                <th>API Endpoint</th>
+            </tr>
+        </table>
+    </main>
+    <script>
+        // Pretty-print seconds to hours:minutes:seconds
+        function toHHMMSS(time) {
+            const sec_num = parseInt(time, 10);
+            let hours = Math.floor(sec_num / 3600);
+            let minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+            let seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+            if (minutes < 10 && hours > 0) { minutes = "0" + minutes; }
+            if (seconds < 10) { seconds = "0" + seconds; }
+            if (hours == "00")
+                return minutes + ':' + seconds;
+            return hours + ':' + minutes + ':' + seconds;
+        }
+
+        /**
+        * Create DOM element given HTML string representation
+        * https://stackoverflow.com/questions/494143/creating-a-new-dom-element-from-an-html-string-using-built-in-dom-methods-or-pro/35385518#35385518
+        * @param {String} HTML representing a single element
+        * @return {Element}
+        */
+        function htmlToElement(html) {
+            const template = document.createElement('template');
+            html = html.trim(); // Never return a text node of whitespace as the result
+            template.innerHTML = html;
+            return template.content.firstChild;
+        }
+
+        // Send a POST request to the server (send information)
+        // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#Supplying_request_options
+        async function postData(url = '', data = {}) {
+            const response = await fetch(url, {
+                method: 'POST',
+                mode: 'cors',
+                cache: 'no-cache',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                redirect: 'follow',
+                referrerPolicy: 'no-referrer',
+                body: JSON.stringify(data)
+            });
+            return response;
+        }
+
+        // Send a GET request to the server (request information)
+        // Primaryly used to grab JSON via REST api
+        async function getData(url) {
+            const response = await fetch(url, {
+                method: 'GET',
+                mode: 'cors',
+                cache: 'no-cache',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                redirect: 'follow',
+                referrerPolicy: 'no-referrer'
+            });
+            return response;
+        }
+
+        // GET all songs from the database and populate the HTML table
+        function populateSongsTable() {
+            getData("/songs")
+                .then(resp => resp.json())  // Convert response to JSON object
+                .then(data => {
+                    const table = document.getElementById("songsTable");
+                    for(let i=0; i < data.songs.length; i++) {
+                        const el = data.songs[i];
+                        table.appendChild(htmlToElement(`
+                            <tr class="row">
+                                <th>${el.name}</th>
+                                <th>${el.author}</th>
+                                <th>${toHHMMSS(el.duration)}</th>
+                                <th><a href="/songs/${i}" target="_blank"><button>GET</button></a></th>
+                            </tr>
+                        `))
+                    }
+                });
+        }
+
+        // Grab text from the HTML input and get back it's response
+        function handleEchoForm() {
+            const text = document.getElementById("echoText").value.trim();
+            if (text.length == 0) { return; }
+            postData("/echo", text)
+                .then(response => {
+                    console.log(response);
+                    if (response.status != 200) {
+                        alert("Error!");
+                        return;
+                    }
+                    response.text().then(txt => alert("Received response: " + txt));
+                });
+        }
+
+        // Wait for the page to be fully loaded before defining event handlers
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("echoSubmit").addEventListener("click", handleEchoForm);
+
+            populateSongsTable();
+        });
+    </script>
+</body>
+
+</html>
