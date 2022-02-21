@@ -1,9 +1,8 @@
 # README
 
-TODO Heavily document code
-
 ## Presentation
-TODO Add link
+[Link to Presentation Slide Deck](Presentation.pptx)
+TODO Link to Video
 
 ## Rust Installation
 Rust can be downloaded from their website <https://www.rust-lang.org/tools/install>  
