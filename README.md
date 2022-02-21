@@ -24,12 +24,13 @@ The rust implementation can be found within [guessing_game](guessing_game). To r
 A C implementation is also provided within [guessing_game_c](guessing_game_c). This is used to show the difference in workflow between Rust and C. To run this, make sure you have `gcc` installed. Then run `make compile && ./app` to launch the program.
 
 ### Fibonacci
-[Link to sub-project](fibonacci)
+[Link to sub-project](fibonacci)  
 Two different implementations of fibonacci. One is a basic recursive definition. The other using dynamic programming paradigms to save previous results for future calls.
 
-
 ### QueueBot
-[Link to sub-project](queuebot)
+[Link to sub-project](queuebot)  
 An implementation of CS 120's QueueBot but within Rust instead of Python. See that project's README for more information
 
-### Web servers
+### Actix Web Server
+[Link to sub-project](actix_example)  
+Since I'm a web developer, I thought I would try one of Rust's HTTP server crates. This project defines an HTTP server (which can be viewed via a web browser). See the README within that project for more information.

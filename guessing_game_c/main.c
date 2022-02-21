@@ -8,15 +8,17 @@ int main() {
 
     printf("Welcome to guessing game!\n");
 
+    // Generate a random number
     srand(time(0));
     secret_number = rand() % 100;
 
     while(1) {
         printf("Enter your guess below\n");
-        scanf("%d", &guess);
+        scanf("%d", &guess);  // Get number from user
 
         printf("Your guess was %d\n", guess);
 
+        // Check if the guess was correct
         if(guess < secret_number) {
             printf("Higher\n");
         } else if(guess > secret_number) {

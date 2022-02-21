@@ -208,8 +208,9 @@ impl QueueBot {
             Some(MessageType::Warning))
         }
 
+        // Figure out which command is being run
         match *split_message.get(1).unwrap() {
-            // A list of student commands
+            // Check all student commands
             "ping" => self.queue_ping(),
             "join" => self.q_join(msg.author),
             "leave" => self.q_leave(msg.author),
@@ -217,6 +218,7 @@ impl QueueBot {
             "position" => self.q_position(msg.author),
             "list" => self.q_list(),
 
+            // None of the above matched
             // Check if they are a TA. If they are, compare against TA commands
             _ => match msg.author.is_ta() {
                 false => self.send_invalid_syntax(msg.author),
@@ -349,6 +351,7 @@ impl QueueBot {
 
 
 fn main() {
+    // Create mock users
     let ta = get_user("Ben", "0001", true);
     let students = vec![
         get_user("Kapua", "0002", false),
