@@ -1,8 +1,12 @@
 # README
 
+## Github Repo
+[Click me to go to github repository](https://github.com/benperumala/cs372-proj1)
+
 ## Presentation
 [Link to Presentation Slide Deck](Presentation.pptx)
 TODO Link to Video
+[Link to Video]()
 
 ## Rust Installation
 Rust can be downloaded from their website <https://www.rust-lang.org/tools/install>  
