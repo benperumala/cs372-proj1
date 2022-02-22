@@ -185,6 +185,9 @@ impl QueueBot {
 
     /// "Send" a message to Discord.
     /// In reality, this just prints the message to stdout
+    /// If `cmd_prefix` is specified, a colorful emote
+    /// will be added to the front of the message to help give a
+    /// visual aid of the message status (succeeded, failed, etc.)
     fn send(&self, message: String, cmd_prefix: Option<MessageType>) {
         let prefix = match cmd_prefix {
             None => "",

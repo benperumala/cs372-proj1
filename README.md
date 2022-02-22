@@ -4,13 +4,13 @@
 [Click me to go to github repository](https://github.com/benperumala/cs372-proj1)
 
 ## Presentation
-[Link to Presentation Slide Deck](Presentation.pptx)
+[Link to Presentation Slide Deck](Presentation.pptx)  
 TODO Link to Video
 [Link to Video]()
 
 ## Rust Installation
 Rust can be downloaded from their website <https://www.rust-lang.org/tools/install>  
-If you have [Docker](https://www.docker.com/get-started), you can also use the `rust:1.58.1-buster` image and [mount the given projects](https://docs.docker.com/storage/bind-mounts/#start-a-container-with-a-bind-mount)
+If you have [Docker](https://www.docker.com/get-started), you can also use the `rust:1.58.1-buster` image and [mount the given projects](https://docs.docker.com/storage/bind-mounts/#start-a-container-with-a-bind-mount) (If you don't then installing Rust the normal way is the easiest way to go)
 
 ## Running Projects
 Each "crate" must be compiled before run. This can be done via command line. `cd` into a given directory then execute `cargo run`. This will build the project then run it.

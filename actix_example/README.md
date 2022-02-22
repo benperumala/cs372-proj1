@@ -1,10 +1,10 @@
 # README
 
-This project uses the rust Crate [Actix Web](https://actix.rs/). Crates are public libraries that can be installed through the internet like with Python's `pip` or NodeJS' `npm`. With Actix Web, it is possible to create an asynchronous HTTP server which is able to efficiently process requests while keeping system resources down to a minimum.
-
-This project is split into [main.rs](src/main.rs) and [db.r](src/db.rs). main.rs is the primary web server while db.rs acts as a simple JSON file-backed database.
+This project is split into [main.rs](src/main.rs) and [db.r](src/db.rs). `main.rs` is the primary web server while `db.rs` acts as a database interface. `db.rs` is backed by a JSON file [located within the src directory](src/data.json).
 
 When you run the project via `cargo run`, a new HTTP server will be started on <http://127.0.0.1:8080> with a few routes.
+
+This project uses the rust Crate [Actix Web](https://actix.rs/). Crates are public libraries that can be installed through the internet like with Python's `pip` or NodeJS' `npm`. With Actix Web, it is possible to create an asynchronous HTTP server which is able to efficiently process HTTP requests while keeping system resources down to a minimum.
 
 All the routes below are relative paths. To get the absolute path, prepend the HTTP link above:
 
@@ -17,3 +17,4 @@ Going to <http://127.0.0.1/> will open up the homepage which will:
 
 - Allow you to test the `/echo` route
 - Populate a table with all known songs from the database (via javascript request)
+- Go to specific sound API endpoints
