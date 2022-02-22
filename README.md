@@ -5,8 +5,7 @@
 
 ## Presentation
 [Link to Presentation Slide Deck](Presentation.pptx)  
-TODO Link to Video
-[Link to Video]()
+[Link to Video](https://youtu.be/C2yzJMcF1o4)  
 
 ## Rust Installation
 Rust can be downloaded from their website <https://www.rust-lang.org/tools/install>  
